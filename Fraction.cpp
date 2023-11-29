@@ -1,4 +1,8 @@
 #include "Fraction.h"
+#include <iostream>
+#include <cmath>
+
+using namespace std;
 
 int gcd(int a, int b) {
     while (b != 0) {
@@ -47,43 +51,53 @@ Fraction divideFractions(const Fraction& frac1, const Fraction& frac2) {
     return reduceFraction(result);
 }
 
-void showFractionMenu(Fraction& frac1, Fraction& frac2) {
+void showFractionMenu() {
+    int num1, den1, num2, den2;
+    cout << "Enter the first fraction (numerator and denominator): ";
+    cin >> num1 >> den1;
+
+    cout << "Enter the second fraction (numerator and denominator): ";
+    cin >> num2 >> den2;
+
+    Fraction frac1 = { num1, den1 };
+    Fraction frac2 = { num2, den2 };
+
     int choice;
     do {
-        std::cout << "Fraction Operations:\n"
+        cout << "Fraction Operations:\n"
             << "1. Add Fractions\n"
             << "2. Subtract Fractions\n"
             << "3. Multiply Fractions\n"
             << "4. Divide Fractions\n"
             << "5. Back to Main Menu\n";
-        std::cin >> choice;
+        cin >> choice;
 
         switch (choice) {
         case 1: {
             Fraction result = addFractions(frac1, frac2);
-            std::cout << "Result of addition: " << result.numerator << "/" << result.denominator << "\n";
+            cout << "Result of addition: " << result.numerator << "/" << result.denominator << "\n";
             break;
         }
         case 2: {
             Fraction result = subtractFractions(frac1, frac2);
-            std::cout << "Result of subtraction: " << result.numerator << "/" << result.denominator << "\n";
+            cout << "Result of subtraction: " << result.numerator << "/" << result.denominator << "\n";
             break;
         }
         case 3: {
             Fraction result = multiplyFractions(frac1, frac2);
-            std::cout << "Result of multiplication: " << result.numerator << "/" << result.denominator << "\n";
+            cout << "Result of multiplication: " << result.numerator << "/" << result.denominator << "\n";
             break;
         }
         case 4: {
             Fraction result = divideFractions(frac1, frac2);
-            std::cout << "Result of division: " << result.numerator << "/" << result.denominator << "\n";
+            cout << "Result of division: " << result.numerator << "/" << result.denominator << "\n";
             break;
         }
         case 5:
-            std::cout << "Returning to Main Menu...\n";
+            cout << "Returning to Main Menu...\n";
             break;
         default:
-            std::cout << "Invalid choice. Please enter a valid option.\n";
+            cout << "Invalid choice. Please enter a valid option.\n";
         }
     } while (choice != 5);
 }

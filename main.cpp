@@ -28,7 +28,7 @@ int main() {
             showPointMenu(p1, p2);
             break;
         case 3:
-            showFractionMenu(frac1, frac2);
+            showFractionMenu();
             break;
         case 4:
             cout << "Exiting...\n";
